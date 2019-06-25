@@ -4,8 +4,6 @@ import com.xingtb.Person;
 import com.xingtb.annotation.ExcelTitle;
 import org.junit.Test;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -101,21 +99,22 @@ public class TestForMysql {
 
     @Test
     public void testFineBI() throws ClassNotFoundException, SQLException, InterruptedException {
-        String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://192.168.2.233:3306/vip";
-        String USER = "root";
-        String PASS = "Jsb123456";
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost:3306/test?&useUnicode=true&characterEncoding=UTF-8";
+        String USER = "admin";
+        String PASS = "admin";
         Class.forName(JDBC_DRIVER);
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-        Statement statement = conn.createStatement();
-//        ResultSet rs = statement.executeQuery("select * from test_finebi");
+        System.out.println(conn);
+//        Statement statement = conn.createStatement();
+//        ResultSet rs = statement.executeQuery("show tables");
 //        while (rs.next()) {
-//            String name = rs.getString("num");
+//            String name = rs.getString(0);
 //            System.out.println(name);
 //        }
-        for (int i = 0; i < 100; i++) {
-            statement.execute("insert into test_finebi(num) values(" + i + ")");
-            Thread.sleep(1000);
-        }
+//        for (int i = 0; i < 100; i++) {
+//            statement.execute("insert into test_finebi(num) values(" + i + ")");
+//            Thread.sleep(1000);
+//        }
     }
 }
